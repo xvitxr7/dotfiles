@@ -1,0 +1,10 @@
+general.import = [
+    "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[font]
+normal = { family = "Maple Mono" }
+
+[window]
+opacity = 0.9
+padding = { x = 10, y = 10 }

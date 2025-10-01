@@ -1,0 +1,172 @@
+{
+    "height": 44,
+    "modules-left": [
+        "group/org",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "group/centerisland"
+    ],
+    "modules-right": [
+        "tray",
+        "group/system"
+    ],
+
+    "custom/arch": {
+         "format": "󰣇",
+         "tooltip": false,
+         "on-click": "wofi --show drun"
+    },
+
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "enable-bar-scroll": true,
+        "disable-scroll-wraparound": true,
+        "active-only": false,
+        "format": "{icon}",
+        "format-icons": {
+            "default": "○",
+            "active": "●"
+        }
+    },
+
+    "mpris": {
+        "format": "{status_icon} {position} • {dynamic}",
+        "interval": 1,
+        "dynamic-len": 40,
+        "max-length": 40,
+        "status-icons": {
+            "playing": "⏸",
+            "paused": "▶",
+            "stopped": ""
+        },
+        "dynamic-order": ["title", "artist"]
+    },
+
+
+    "hyprland/window": {
+        "format": "{title}", 
+        "max-length": 40,
+        "min-length": 20,
+        "all-outputs": true
+    },
+
+    "cpu": {
+        "format": "<b>CPU:</b>{usage}%",
+        "tooltip": false,
+        "interval": 2,
+        "on-click": "alacritty -e btop",
+    },
+
+    "memory": {
+        "format": "<b>RAM</b>:{}%",
+        "tooltip": false,
+        "interval": 2,
+        "on-click": "alacritty -e btop",
+    },
+
+    // Volume and media controls.
+    "wireplumber": {
+        "scroll-step": 5,
+        "format": "{icon}{volume}%",
+        "format-bluetooth": "{icon}{volume}% ",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "🔇",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" :", " :", " :"]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+
+    "backlight": {
+        "format": "{icon}:{percent}%",
+        "format-icons": ["", "", "🌙"],
+        "on-click": "~/.config/waybar/scripts/brightness_slider.sh"  
+    },
+
+    "group/org": {
+        "orientation": "horizontal",
+        "modules": [
+            "hyprland/workspaces",
+            "cpu",
+            "memory"
+        ]
+    },
+    "clock": {
+        "format": "{:%H:%M•%d/%m}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "onclick" : "merkuro-calendar"
+    },
+    "custom/clipboard": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "copyq show"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "on-click": "wlogout"
+    },
+
+    "group/centerisland": {
+        "orientation": "horizontal",
+        "modules": [
+            "clock",
+            "mpris",
+            "weather"
+        ]
+    },
+
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            "wireplumber",
+            "custom/clipboard",
+            "network",
+            "custom/bluetooth"
+        ]
+    },
+
+    "network": {
+        "interface": "enp4s0",
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀 ",
+        "format-disconnected": "󰖪",
+        "tooltip-format": "{ipaddr}\n{ssid} ({signalStrength}%)",
+        "on-click": "$TERM nmtui",
+        "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ]
+    },
+
+    "custom/cava": {
+        "exec": "~/.config/waybar/scripts/cava_wrapper.sh",
+        "format": "♪ {}",
+        "restart-interval": 1,
+        "max-length": 50,
+        "on-click": "pkill cava"
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+    "custom/notifications": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/notification_center.sh"
+    }
+}

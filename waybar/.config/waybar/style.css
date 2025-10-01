@@ -1,104 +1,109 @@
 /* colors defined at top for easy configuring */
-@define-color background #1e1e2e;
-@define-color second-background #45475a;
+
+/* Catppuccin palette */
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color pink #f5c2e7;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color maroon #eba0ac;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
 @define-color text #cdd6f4;
-@define-color borders #cba6f7;
+@define-color subtext1 #bac2de;
+@define-color subtext0 #a6adc8;
+@define-color overlay2 #9399b2;
+@define-color overlay1 #7f849c;
+@define-color overlay0 #6c7086;
+@define-color surface2 #585b70;
+@define-color surface1 #45475a;
+@define-color surface0 #313244;
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
+
+@define-color borders @mauve;
+@define-color text @borders;
 @define-color focused #cba6f7;
 @define-color focused2 #f2cdcd;
 @define-color color1 #313244;
 @define-color color2 #f2cdcd;
-@define-color color3 #b4befe;
 @define-color urgent #B05A5A;
 
+@define-color workspace-fg @borders;
+@define-color mpris-playing @green;
+@define-color mpris-idle @surface0;
 
-/* font declared */
+/* Initial setup */
 * {
-    font-family: "NotoMono Nerd Font Mono";
+    font-family: "Maple Mono";
     font-size: 15px;
 }
-#custom-openbracket,
-#custom-closebracket{
-    margin: 0 5px ;
-}
 
-/* idk what all this does */
 window#waybar {
     background-color: transparent;
     border-bottom: 0;
+    border-color: transparent;
     color: @text;
-    transition: background-color 0.5s;
 }
+
 window#waybar.hidden {
+    border-color: transparent;
     opacity: 0.2;
 }
+
 window#waybar.empty #window {
+    border-color: transparent;
     background-color: transparent;
 }
 
+/* Common style for all modules */
+#system, #centerisland, #tray, #window, #org {
+    background-color: @base;
+    border: 2px solid @focused;
+    border-radius: 15px;
+    padding: 2px 5px 2px 5px;
+    margin-right: 10px;
+}
 
 /* configuring the modules */
 .modules-left {
-    margin: 10px 0 0 10px;
+    margin: 10px 0 0 20px;
     padding: 0 0 0 7px;
-    background-color: @background;
-    border: 2px solid @focused;
-    border-radius: 5px;
 }
+
 .modules-center {
     margin: 10px 0 0 0;
     padding: 0 10px 0 10px;
-    background-color: @background;
-    border: 2px solid @focused;
-    border-radius: 5px;
 }
+
 .modules-right {
-    margin: 10px 10px 0 0;
+    margin: 10px 20px 0 0;
     padding: 0 10px 0 10px;
-    background-color: @background;
-    border: 2px solid @focused;
-    border-radius: 5px;
 }
 
+/* Workspace module */
 
-/* whats this?? */
-button {
-  border: none;
+#workspaces label {
+    font-size: 16px;
 }
 
-
-/* left island */
-
-/* menu pannel */
-#custom-arch,
-#custom-powerprofile,
-#custom-themeswitcher{
-    padding-right: 10px;
-    padding-left: 5px;
-    font-size: 15px;
-    border-radius: 8px;
-}
-#custom-arch:hover {
-    color: @color1;
-}
-#custom-powerprofile:hover{
-    color: @color1
-}
-#custom-themeswitcher:hover {
-    color: @color1;
-}
-
-/* workspace pannel */
 #workspaces button {
-    padding: 0 2px;
     background-color: transparent;
-    color: @text;
+    padding: 0 2px;
+    color: @mauve;
     border-radius: 0;
 }
 #workspaces button:hover {
     background-color: @second-background;
 }
 #workspaces button.active {
-    color: @focused2;
     background-color: @second-background;
 }
 #workspaces button.urgent {
@@ -113,17 +118,29 @@ button {
     margin-right: 0;
 }
 
-/* media player */
-#mpris {
-    margin: 0 0 0 5px;
+/* Subtle highlight */
+#mpris, #workspaces, #clock, #cpu, #memory, #wireplumber {
     padding: 0 9px ;
-    background-color: @background;
+    background-color: @surface0;
     color: @text;
+    margin: 5px 5px 5px 0;
+    border-radius: 10px;
 }
+
 #mpris.playing {
-    background-color: @color3;
-    border-radius: 2px;
-    color: @background;
+    background-color: @mpris-playing;
+    color: @base;
+}
+
+#clock {
+    background-color: @surface0;
+    margin: 5px 5px 5px 0;
+    border-radius: 10px;
+    transition: background-color 0.4s cubic-bezier(.17,.67,.83,.67);
+}
+
+#clock:hover {
+    background-color: @surface1;
 }
 
 
@@ -132,39 +149,42 @@ button {
     padding: 0 5px;
 }
 
+#memory {
+    color: @rosewater;
+}
+
+#cpu {
+    color: @pink;
+}
+
 /* Right Island */
 
+#tray {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 /* module general styles */
-#clock,
-#battery,
-#cpu,
-#memory,
-#custom-clipboard,
-#custom-bluetooth,
 #network {
-  padding: 0 10px ;
+    font-size: 20px;
 }
-#clock:hover,
-#battery:hover,
-#custom-cpu:hover,
-#custom-clipboard:hover,
-#custom-bluetooth:hover,
-#network:hover,
-#idle_inhibitor:hover,
-#custom-swaync:hover,
-#backlight:hover,
-#wireplumber:hover{
-    color: @color1;
+
+#system * {
+    margin-right: 10px;
 }
+
+#custom-clipboard {
+    color: @teal; 
+}
+
 #idle_inhibitor{
   padding: 0 10px 0 0;
 }
 #custom-powerprofile{
   padding: 0 8px 0 4px;
 }
-/* Remaining Modules */
-#backlight,
 #wireplumber{
+    color: @blue;
     padding: 0 5px;
 }
 #wireplumber.muted {
@@ -178,7 +198,7 @@ button {
 #battery.charging,
 #battery.plugged {
   background-color: @focused2 ;
-  color: @background;
+  color: @base;
 }
 #battery.critical:not(.charging) {
   background-color: @urgent;

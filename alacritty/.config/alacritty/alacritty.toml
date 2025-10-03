@@ -4,6 +4,7 @@ general.import = [
 
 [font]
 normal = { family = "Maple Mono" }
+size   = 11.1
 
 [window]
 opacity = 0.9

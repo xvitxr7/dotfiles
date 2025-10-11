@@ -12,7 +12,7 @@
             name: "root",
             parent: "",
             hook: Hook(parent_anchor: TR, self_anchor: TR),
-            offset: Vec2(x: -15.0, y: 50.0),
+            offset: Vec2(x: -40.0, y: 60.0),
             params: NotificationBlock((
                 monitor: 0,
                 border_width: 3.0,
@@ -23,7 +23,7 @@
                 border_color_critical: Color(hex: "#f38ba8"),
                 border_color_paused: Color(hex: "#f9e2af"),
                 gap: Vec2(x: 0.0, y: 8.0),
-                notification_hook: Hook(parent_anchor: BL, self_anchor: TL),
+                notification_hook: Hook(parent_anchor: BR, self_anchor: TR),
             )),
         ),
 

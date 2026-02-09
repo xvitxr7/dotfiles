@@ -1,5 +1,3 @@
-/* colors defined at top for easy configuring */
-
 /* Catppuccin palette */
 @define-color rosewater #f5e0dc;
 @define-color flamingo #f2cdcd;
@@ -40,174 +38,167 @@
 @define-color mpris-playing @green;
 @define-color mpris-idle @surface0;
 
-/* Initial setup */
 * {
-    font-family: "Maple Mono";
-    font-size: 15px;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  min-height: 0;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
+}
+
+#custom-rofi,
+#window,
+#disk,
+#cpu,
+#custom-cpu_temp,
+#custom-cpu_temp.critical,
+#backlight,
+#custom-memory,
+#pulseaudio,
+#pulseaudio.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#network,
+#clock {
+  padding-right: 3pt;
 }
 
 window#waybar {
-    background-color: transparent;
-    border-bottom: 0;
-    border-color: transparent;
-    color: @text;
+  color: @text;
+  background: @surface0;
+  font-family: JetBrainsMono Nerd Font Mono;
+  font-size: 12pt;
+  font-weight: 900;
 }
 
-window#waybar.hidden {
-    border-color: transparent;
-    opacity: 0.2;
-}
-
-window#waybar.empty #window {
-    border-color: transparent;
-    background-color: transparent;
-}
-
-/* Common style for all modules */
-#system, #centerisland, #tray, #window, #org {
-    background-color: @base;
-    border: 2px solid @focused;
-    border-radius: 15px;
-    padding: 2px 5px 2px 5px;
-    margin-right: 10px;
-}
-
-/* configuring the modules */
-.modules-left {
-    margin: 10px 0 0 20px;
-    padding: 0 0 0 7px;
-}
-
-.modules-center {
-    margin: 10px 0 0 0;
-    padding: 0 10px 0 10px;
-}
-
+.modules-left,
+.modules-center,
 .modules-right {
-    margin: 10px 20px 0 0;
-    padding: 0 10px 0 10px;
-}
-
-/* Workspace module */
-
-#workspaces label {
-    font-size: 16px;
+  padding: 3pt;
 }
 
 #workspaces button {
-    background-color: transparent;
-    padding: 0 2px;
-    color: @mauve;
-    border-radius: 0;
+  color: @yellow;
+  border: 2pt solid @yellow;
+  margin-right: 3pt;
+  min-width: 15pt;
+  padding: 0 3.75pt;
 }
+
+#workspaces button:last-child {
+  margin-right: 0;
+}
+
 #workspaces button:hover {
-    background-color: @second-background;
+  color: @rosewater;
+  border-color: #d3869b;
 }
-#workspaces button.active {
-    background-color: @second-background;
+
+#workspaces button.visible,
+#workspaces button.visible:hover,
+#workspaces button.active,
+#workspaces button.active:hover {
+  color: @green;
+  border-color: @green;
 }
+
 #workspaces button.urgent {
-    background-color: @urgent;
+  color: @red;
+  border-color: @red;
 }
 
-/* no idea what this does */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-/* Subtle highlight */
-#mpris, #workspaces, #clock, #cpu, #memory, #wireplumber {
-    padding: 0 9px ;
-    background-color: @surface0;
-    color: @text;
-    margin: 5px 5px 5px 0;
-    border-radius: 10px;
+#custom-rofi {
+  color: @surface1;
+  border: 2pt solid #458588;
+  background: #83a598;
+  padding: 0 6pt;
 }
 
-#mpris.playing {
-    background-color: @mpris-playing;
-    color: @base;
+#window {
+  border-bottom: 2pt solid @maroon;
 }
 
-#clock {
-    background-color: @surface0;
-    margin: 5px 5px 5px 0;
-    border-radius: 10px;
-    transition: background-color 0.4s cubic-bezier(.17,.67,.83,.67);
+#tray {
+  border-bottom: 2pt solid @surface2;
+  background: @surface1;
+  padding: 0 6pt;
 }
 
-#clock:hover {
-    background-color: @surface1;
-}
-
-
-/* center module  */
-#window{
-    padding: 0 5px;
-}
-
-#memory {
-    color: @rosewater;
+#disk {
+  border-bottom: 2pt solid @red;
 }
 
 #cpu {
-    color: @pink;
+  border-bottom: 2pt solid @peach;
 }
 
-/* Right Island */
-
-#tray {
-    padding-right: 10px;
-    padding-left: 10px;
+#custom-cpu_temp {
+  border-bottom: 2pt solid @green;
 }
 
-/* module general styles */
+#custom-cpu_temp.critical {
+  color: @urgent;
+  border-bottom: 2pt solid @urgent;
+}
+
+#custom-cpu_temp.unknown {
+  color: @surface2;
+  border-bottom: 2pt solid @surface2;
+}
+
+#backlight {
+  border-bottom: 2pt solid @yellow;
+}
+
+#custom-memory {
+  border-bottom: 2pt solid @teal;
+}
+
+#pulseaudio {
+  border-bottom: 2pt solid @sky;
+}
+
+#pulseaudio.muted {
+  color: @urgent;
+  border-bottom: 2pt solid @urgent;
+}
+
+#battery {
+  border-bottom: 2pt solid @green;
+}
+
+#battery.critical {
+  color: @urgent;
+  border-bottom: 2pt solid @urgent;
+}
+
+#battery.critical,
+#battery.charging.critical {
+  color: @urgent;
+  border-bottom: 2pt solid @urgent;
+}
+
+#battery.warning,
+#battery.charging.warning {
+  color: @maroon;
+  border-bottom: 2pt solid @maroon;
+}
+
+#clock {
+  border-bottom: 2pt solid @green;
+}
+
 #network {
-    font-size: 20px;
+  border-bottom: 2pt solid @flamingo;
 }
 
-#system * {
-    margin-right: 10px;
-}
-
-#custom-clipboard {
-    color: @teal; 
-}
-
-#idle_inhibitor{
-  padding: 0 10px 0 0;
-}
-#custom-powerprofile{
-  padding: 0 8px 0 4px;
-}
-#wireplumber{
-    color: @blue;
-    padding: 0 5px;
-}
-#wireplumber.muted {
-  background-color: @color2;
-}
-#custom-swaync {
-    padding: 0 10px 0 5px;
-    font-size: 16px;       /* same scale as other icons */
-    color: @text;
-}
-#battery.charging,
-#battery.plugged {
-  background-color: @focused2 ;
-  color: @base;
-}
-#battery.critical:not(.charging) {
-  background-color: @urgent;
-  color: @text;
-  animation: blink 0.5s steps(12) infinite alternate;
-}
-@keyframes blink {
-  to {
-    background-color: @second-background;
-    color: @text;
-  }
+#mode,
+#submap {
+  color: #222222;
+  border: 2pt solid #458588;
+  background: #83a598;
+  padding: 0 4.5pt;
 }

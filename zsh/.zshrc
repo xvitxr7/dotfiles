@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="xvi"
+ZSH_THEME="alanpeabody"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
@@ -28,3 +28,5 @@ setopt hist_find_no_dups
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+echo "Welcome back, xvitxr.\n"

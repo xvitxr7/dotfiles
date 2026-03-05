@@ -7,8 +7,11 @@ normal = { family = "JetBrainsMono Nerd Font Mono" }
 size   = 11.1
 
 [window]
-opacity = 0.9
-padding = { x = 10, y = 10 }
+opacity = 1
+# padding = { x = 10, y = 10 }
 
 [terminal]
 shell = { program = "/bin/tmux" }
+
+[colors.primary]
+background = "#1D2021"
